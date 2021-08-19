@@ -5,6 +5,7 @@ import { CardPostComponent } from './components/card-post/card-post.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FakeNgIfDirective } from './directives/fake-ng-if.directive';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,6 @@ import { FakeNgIfDirective } from './directives/fake-ng-if.directive';
       HeaderComponent,
       FakeNgIfDirective
     ],
-    imports: [CommonModule],
+    imports: [CommonModule, RouterModule],
 })
 export class SharedModule {}
