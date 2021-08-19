@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/es';
 declare const swal: any;
@@ -9,6 +9,10 @@ declare const swal: any;
   styleUrls: ['./card-post.component.scss']
 })
 export class CardPostComponent implements OnInit {
+  @Input() index!: number;
+  @Input() title!: string;
+  @Input() type!: string;
+  @Output() delete: EventEmitter<number> = new EventEmitter<number>();
   date!: string;
   constructor() { 
     moment.locale('es')
@@ -16,6 +20,10 @@ export class CardPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onClickDelete() {
+    this.delete.emit(this.index);
   }
 
   onClickAlerta() {
