@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ValidarGuard } from './validar.guard';
+import { ValidarGuard } from './validar-actived.guard';
 
 describe('ValidarGuard', () => {
   let guard: ValidarGuard;
