@@ -1,0 +1,13 @@
+Directives => https://angular.io/guide/attribute-directives
+              https://www.sitepoint.com/practical-guide-angular-directives/
+              https://www.youtube.com/watch?v=2N-G0ACbAWc
+
+Objetos/Array => https://www.youtube.com/watch?v=goCeqBn15Ls
+routing => https://www.youtube.com/watch?v=jYcAO49PaCI
+conocinedo angular => https://www.youtube.com/watch?v=J8qLTaZqSDw
+lazy loading => https://www.youtube.com/watch?v=K6XsI0svtwE&t=476s
+modulos y componentes => https://www.youtube.com/watch?v=1BKQCVitNu0
+pipes => https://www.youtube.com/watch?v=z_OZuykJYbY
+
+OTROS
+- https://medium.com/@shijin_nath/angular-right-file-structure-and-best-practices-that-help-to-scale-2020-52ce8d967df5

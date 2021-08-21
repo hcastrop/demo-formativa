@@ -2,6 +2,7 @@
     <ng-container *ngFor="let item of posts; let i = index">
         <div class="col-md-3 mb-3"
              *fakeNgIf="item.view">
+             {{ '2020-08-20' | dateCustom:'LLLL':'date' }}
             <demo-card-post [index]="i"
                             [type]="item?.type"
                             [title]="item.title"
