@@ -5,6 +5,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from 'src/app/shared/providers/users.service';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { UsersService } from 'src/app/shared/providers/users.service';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    PipesModule
   ],
   providers: [UsersService]
 })

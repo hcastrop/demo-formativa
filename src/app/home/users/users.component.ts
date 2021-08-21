@@ -7,13 +7,29 @@ import { UsersService } from 'src/app/shared/providers/users.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  page: number = 0;
+  users!: any[];
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.usersService.get().subscribe((res) => {
-      console.log(res);
-    });
+    this.showUsers();
   }
 
+  onClickNavLeft() {
+    this.page--;
+    this.showUsers();
+  }
+
+  onClickNavRight() {
+    this.page++;
+    this.showUsers();
+  }
+
+  private showUsers(): void {
+    this.usersService.get(this.page).subscribe((res: any) => {
+      console.log(res);
+      this.users = res.data;
+    });
+  }
 }

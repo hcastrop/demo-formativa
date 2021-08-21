@@ -1,1 +1,20 @@
-<p>users works!</p>
+<div class="wrapper-content-users">
+    <button class="wrapper-content-users__nav-left" (click)="onClickNavLeft()">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="wrapper-content-users__content">
+        <div class="content-information-user" *ngFor="let item of users">
+            <div class="user-image">
+                <img [src]="item.avatar" alt="">
+            </div>
+            <div class="user-full-name">
+                {{ item.first_name | fullName: item.last_name }}
+            </div>
+        </div>
+    </div>
+
+    <button class="wrapper-content-users__nav-right" (click)="onClickNavRight()">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+</div>

@@ -1,0 +1,35 @@
+.wrapper-content-users {
+    display        : flex;
+    justify-content: center;
+
+    &__content {
+        display        : flex;
+        justify-content: center;
+
+        .content-information-user {
+            margin-right: 15px;
+            text-align  : center;
+
+            .user-image {
+                img {
+                    border-radius: 100%;
+                }
+            }
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    &__nav-right,
+    &__nav-left {
+        background-color: transparent;
+        border          : unset;
+
+        i {
+            font-size: 30px;
+            color    : rgb(0, 82, 182);
+        }
+    }
+}
