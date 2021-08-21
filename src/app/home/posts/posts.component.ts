@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from 'src/app/shared/providers/posts.service';
 
 @Component({
   selector: 'demo-posts',
@@ -15,7 +16,7 @@ export class PostsComponent implements OnInit {
     { title: 'Post 05', view: true },
     { title: 'Post 06', view: true },
   ];
-  constructor() { }
+  constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
   }
