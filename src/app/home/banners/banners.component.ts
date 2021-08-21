@@ -9,12 +9,16 @@ declare const swal: any;
 })
 export class BannersComponent implements OnInit {
     banners!: any[];
+    bannerSelected: any;
     constructor(private bannersService: BannersService) {}
 
     ngOnInit(): void {
         this.showBaners();
+    } 
+    onClickImage(banner: any) {
+      console.log(banner);
+      this.bannerSelected = banner;
     }
-
     onClickDelete(id: number) {
         swal({
             title: 'Are you sure?',

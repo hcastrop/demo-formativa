@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    OnInit,
+    Output,
+    ViewChild,
+} from '@angular/core';
 import { BannersService } from 'src/app/shared/providers/banners.service';
 // import * as bootstrap from 'bootstrap/';
 declare const swal: any;
@@ -9,16 +16,11 @@ declare const swal: any;
     styleUrls: ['./banner-form.component.scss'],
 })
 export class BannerFormComponent implements OnInit {
+    @ViewChild('closebutton') closeButton!: ElementRef;
     @Output() change: EventEmitter<void> = new EventEmitter<void>();
     constructor(private bannersService: BannersService) {}
 
-    ngOnInit(): void {
-
-      // var myModal = bootstrap.Modal(document.getElementById('myModal'), {
-      //   keyboard: false
-      // });
-      // console.log(myModal);
-    }
+    ngOnInit(): void {}
 
     onClickSave() {
         const name: any = document.querySelector('#name');
@@ -44,6 +46,14 @@ export class BannerFormComponent implements OnInit {
                 mimetype.value = '';
                 path.value = '';
                 size.value = '';
+
+                // const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+                //   keyboard: false
+                // });
+
+                // const modalToggle: any = document.getElementById('exampleModal');
+                // modalToggle.hide();
+                this.closeButton.nativeElement.click();
             });
     }
 }

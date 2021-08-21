@@ -14,7 +14,9 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.mimetype }}</td>
                 <td>
-                    <img [src]="item.path" width="100px"/>
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModalImage">
+                        <img [src]="item.path" width="100px" (click)="onClickImage(item)"/>
+                    </a>
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger" (click)="onClickDelete(item.id)">
@@ -26,3 +28,4 @@
     </table>
 </div>
 <demo-banner-form (change)="onChangeSave()"></demo-banner-form>
+<demo-banner-image [image]="bannerSelected?.path"></demo-banner-image>

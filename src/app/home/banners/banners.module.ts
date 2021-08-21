@@ -6,12 +6,14 @@ import { BannersComponent } from './banners.component';
 import { BannersService } from 'src/app/shared/providers/banners.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BannerFormComponent } from './banner-form/banner-form.component';
+import { BannerImageComponent } from './banner-image/banner-image.component';
 
 
 @NgModule({
   declarations: [
     BannersComponent,
-    BannerFormComponent
+    BannerFormComponent,
+    BannerImageComponent
   ],
   imports: [
     CommonModule,
