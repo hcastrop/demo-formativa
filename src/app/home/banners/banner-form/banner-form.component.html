@@ -4,7 +4,7 @@
      tabindex="-1"
      aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" [formGroup]="form">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"
@@ -21,28 +21,32 @@
                                class="form-label">Nombre</label>
                         <input type="text"
                                class="form-control"
-                               id="name">
+                               id="name"
+                               formControlName="name">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="mimetype"
                                class="form-label">mimetype</label>
                         <input type="text"
                                class="form-control"
-                               id="mimetype">
+                               id="mimetype"
+                               formControlName="mimetype">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="path"
                                class="form-label">path</label>
                         <input type="text"
                                class="form-control"
-                               id="path">
+                               id="path"
+                               formControlName="path">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="size"
                                class="form-label">size</label>
                         <input type="text"
                                class="form-control"
-                               id="size">
+                               id="size"
+                               formControlName="size">
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ import { BannersService } from 'src/app/shared/providers/banners.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BannerFormComponent } from './banner-form/banner-form.component';
 import { BannerImageComponent } from './banner-image/banner-image.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BannerImageComponent } from './banner-image/banner-image.component';
   imports: [
     CommonModule,
     BannersRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [BannersService]
 })

@@ -6,6 +6,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { BannersService } from 'src/app/shared/providers/banners.service';
 // import * as bootstrap from 'bootstrap/';
 declare const swal: any;
@@ -16,44 +17,45 @@ declare const swal: any;
     styleUrls: ['./banner-form.component.scss'],
 })
 export class BannerFormComponent implements OnInit {
-    @ViewChild('closebutton') closeButton!: ElementRef;
-    @Output() change: EventEmitter<void> = new EventEmitter<void>();
-    constructor(private bannersService: BannersService) {}
+    form!: FormGroup;
 
-    ngOnInit(): void {}
+    @ViewChild('closebutton') closeButton!: ElementRef;
+    @Output() changeValue: EventEmitter<void> = new EventEmitter<void>();
+    constructor(
+        private bannersService: BannersService,
+        private fb: FormBuilder
+    ) {
+        this.form = this.fb.group({
+            name: [{ disabled: false, value: 'name' }, null],
+            mimetype: [{ disabled: false, value: 'mimetype' }, null],
+            path: [{ disabled: false, value: 'path' }, null],
+            size: [{ disabled: false, value: 'size' }, null],
+        });
+    }
+
+    ngOnInit(): void {
+        // this.name.valueChanges.subscribe((res) => console.log(res));
+        // this.mimetype.valueChanges.subscribe((res) => console.log(res));
+    }
 
     onClickSave() {
-        const name: any = document.querySelector('#name');
-        const mimetype: any = document.querySelector('#mimetype');
-        const path: any = document.querySelector('#path');
-        const size: any = document.querySelector('#size');
-
-        this.bannersService
-            .save({
-                name: name.value,
-                mimetype: mimetype.value,
-                path: path.value,
-                size: size.value,
-            })
-            .subscribe(() => {
-                swal('Se guardo correctamente la información', {
-                    icon: 'success',
-                });
-
-                this.change.emit();
-
-                name.value = '';
-                mimetype.value = '';
-                path.value = '';
-                size.value = '';
-
-                // const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-                //   keyboard: false
-                // });
-
-                // const modalToggle: any = document.getElementById('exampleModal');
-                // modalToggle.hide();
-                this.closeButton.nativeElement.click();
+        console.log(this.form.value);
+        this.bannersService.save(this.form.value).subscribe(() => {
+            swal('Se guardo correctamente la información', {
+                icon: 'success',
             });
+
+            this.changeValue.emit();
+
+            this.form.reset();
+
+            // const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+            //   keyboard: false
+            // });
+
+            // const modalToggle: any = document.getElementById('exampleModal');
+            // modalToggle.hide();
+            this.closeButton.nativeElement.click();
+        });
     }
 }
