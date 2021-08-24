@@ -7,6 +7,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { bettweenYearValidator } from 'src/app/core/validators/bettween-year.validator';
 import { BannersService } from 'src/app/shared/providers/banners.service';
 // import * as bootstrap from 'bootstrap/';
 declare const swal: any;
@@ -26,8 +27,8 @@ export class BannerFormComponent implements OnInit {
         private fb: FormBuilder
     ) {
         this.form = this.fb.group({
-            name: [{ disabled: false, value: null }, [Validators.required]],
-            mimetype: [{ disabled: false, value: null }, [Validators.required]],
+            name: [{ disabled: false, value: null }, [Validators.required, bettweenYearValidator(2000, 2021)]],
+            mimetype: [{ disabled: false, value: null }, [Validators.required, bettweenYearValidator(2021, 2022)]],
             path: [{ disabled: false, value: null }, [Validators.required]],
             size: [{ disabled: false, value: null }, [Validators.required]],
         });
