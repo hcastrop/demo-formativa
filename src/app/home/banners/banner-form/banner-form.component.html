@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-3" [ngClass]="{ 'error-valid': form.controls.name.invalid && form.controls.name.touched }">
                         <label for="name"
                                class="form-label">Nombre</label><br>
                         <!-- <label *ngIf="form.controls.name.touched">touched</label><br>
@@ -26,30 +26,42 @@
                                class="form-control"
                                id="name"
                                formControlName="name">
+                        <small class="text-error" *ngIf="form.controls.name.invalid && form.controls.name.touched">
+                            Campo requerido
+                        </small>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-3" [ngClass]="{ 'error-valid': form.controls.mimetype.invalid && form.controls.mimetype.touched }">
                         <label for="mimetype"
                                class="form-label">mimetype</label>
                         <input type="text"
                                class="form-control"
                                id="mimetype"
                                formControlName="mimetype">
+                        <small class="text-error" *ngIf="form.controls.mimetype.invalid && form.controls.mimetype.touched">
+                            Campo requerido
+                        </small>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-3" [ngClass]="{ 'error-valid': form.controls.path.invalid && form.controls.path.touched }">
                         <label for="path"
                                class="form-label">path</label>
                         <input type="text"
                                class="form-control"
                                id="path"
                                formControlName="path">
+                        <small class="text-error" *ngIf="form.controls.path.invalid && form.controls.path.touched">
+                            Campo requerido
+                        </small>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-3" [ngClass]="{ 'error-valid': form.controls.size.invalid && form.controls.size.touched }">
                         <label for="size"
                                class="form-label">size</label>
                         <input type="text"
                                class="form-control"
                                id="size"
                                formControlName="size">
+                        <small class="text-error" *ngIf="form.controls.size.invalid && form.controls.size.touched">
+                            Campo requerido
+                        </small>
                     </div>
                 </div>
             </div>

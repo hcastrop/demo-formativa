@@ -24,7 +24,6 @@ export class FormComponent implements OnInit {
     onClickSave() {
       this.personsStore.push(... this.persons.value);
       this.persons.clear();
-      this.persons.reset();
       this.persons.push(this.addGroup());
     }
 

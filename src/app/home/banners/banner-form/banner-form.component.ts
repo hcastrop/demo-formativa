@@ -6,7 +6,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BannersService } from 'src/app/shared/providers/banners.service';
 // import * as bootstrap from 'bootstrap/';
 declare const swal: any;
@@ -26,10 +26,10 @@ export class BannerFormComponent implements OnInit {
         private fb: FormBuilder
     ) {
         this.form = this.fb.group({
-            name: [{ disabled: false, value: 'name' }, null],
-            mimetype: [{ disabled: false, value: 'mimetype' }, null],
-            path: [{ disabled: false, value: 'path' }, null],
-            size: [{ disabled: false, value: 'size' }, null],
+            name: [{ disabled: false, value: null }, [Validators.required]],
+            mimetype: [{ disabled: false, value: null }, [Validators.required]],
+            path: [{ disabled: false, value: null }, [Validators.required]],
+            size: [{ disabled: false, value: null }, [Validators.required]],
         });
     }
 
@@ -40,6 +40,10 @@ export class BannerFormComponent implements OnInit {
 
     onClickSave() {
         console.log(this.form.value);
+        if (this.form.invalid){
+            this.form.markAllAsTouched();
+            return;
+        }
         this.bannersService.save(this.form.value).subscribe(() => {
             swal('Se guardo correctamente la información', {
                 icon: 'success',
