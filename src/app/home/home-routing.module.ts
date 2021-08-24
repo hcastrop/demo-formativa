@@ -22,6 +22,10 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./banners/banners.module').then((m) => m.BannersModule),
             },
+            {
+                path: 'formulario',
+                loadChildren: () => import('./form/form.module').then(m => m.FormModule)
+            }
         ],
     },
 ];
