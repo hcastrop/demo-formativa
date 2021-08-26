@@ -6,7 +6,9 @@ import {
     HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
+declare const swal: any;
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     constructor() {}
@@ -17,11 +19,29 @@ export class AuthInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<unknown>> {
         console.log(req);
         let request = req.clone({
-            setHeaders: {
-                authorization: 'true',
-            },
+            // setHeaders: {
+            //     authorization: 'true',
+            // },
         });
 
-        return next.handle(request);
+        return next.handle(request).pipe(
+            tap(
+                (res: any) => {
+                },
+                (e) => {
+                    console.log(e);
+                    switch (e.status) {
+                        case 401:
+                            swal('El usuario no se encuentra authorizado.', {
+                                icon: 'error',
+                            });
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            )
+        );
     }
 }
