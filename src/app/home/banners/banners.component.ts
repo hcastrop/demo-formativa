@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BannersService } from 'src/app/shared/providers/banners.service';
+import { StorageService } from 'src/app/shared/providers/storage.service';
 declare const swal: any;
 
 @Component({
@@ -10,14 +11,21 @@ declare const swal: any;
 export class BannersComponent implements OnInit {
     banners!: any[];
     bannerSelected: any;
-    constructor(private bannersService: BannersService) {}
+    constructor(
+        private bannersService: BannersService,
+        private storageService: StorageService
+    ) {}
 
     ngOnInit(): void {
         this.showBaners();
-    } 
+
+        this.storageService.set('demon', { name: 'anthony', edad: 25 });
+        console.log(this.storageService.get('demon'));
+        this.storageService.delete('demon');
+    }
     onClickImage(banner: any) {
-      console.log(banner);
-      this.bannerSelected = banner;
+        console.log(banner);
+        this.bannerSelected = banner;
     }
     onClickDelete(id: number) {
         swal({
@@ -41,7 +49,7 @@ export class BannersComponent implements OnInit {
     }
 
     onChangeSave() {
-      this.showBaners();
+        this.showBaners();
     }
 
     private showBaners() {

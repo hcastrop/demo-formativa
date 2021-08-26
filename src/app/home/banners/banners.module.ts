@@ -9,6 +9,7 @@ import { BannerFormComponent } from './banner-form/banner-form.component';
 import { BannerImageComponent } from './banner-image/banner-image.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
+import { StorageService } from 'src/app/shared/providers/storage.service';
 
 @NgModule({
     declarations: [BannersComponent, BannerFormComponent, BannerImageComponent],
@@ -21,6 +22,7 @@ import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         BannersService,
+        StorageService
     ],
 })
 export class BannersModule {}

@@ -4,44 +4,47 @@ import {
     HttpHandler,
     HttpEvent,
     HttpInterceptor,
+    HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 declare const swal: any;
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor() {}
+    constructor(private router: Router) {}
 
     intercept(
         req: HttpRequest<unknown>,
         next: HttpHandler
-    ): Observable<HttpEvent<unknown>> {
+    ): Observable<HttpEvent<any>> {
         console.log(req);
+
+        const status = localStorage.getItem('status') as string;
         let request = req.clone({
-            // setHeaders: {
-            //     authorization: 'true',
-            // },
+            setHeaders: {
+                authorization: status,
+            },
         });
 
         return next.handle(request).pipe(
-            tap(
-                (res: any) => {
-                },
-                (e) => {
-                    console.log(e);
-                    switch (e.status) {
-                        case 401:
-                            swal('El usuario no se encuentra authorizado.', {
-                                icon: 'error',
-                            });
-                            break;
+            catchError((e: HttpErrorResponse) => {
+                switch (e.status) {
+                    case 401:
+                        swal('El usuario no se encuentra authorizado.', {
+                            icon: 'error',
+                        }).then(() => {
+                            localStorage.clear();
+                            this.router.navigate(['login']);
+                        });
+                        break;
 
-                        default:
-                            break;
-                    }
+                    default:
+                        break;
                 }
-            )
+                return throwError(e);
+            })
         );
     }
 }
