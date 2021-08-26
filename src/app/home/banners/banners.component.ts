@@ -18,6 +18,9 @@ export class BannersComponent implements OnInit {
 
     ngOnInit(): void {
         this.showBaners();
+        const demo = "Ejemplo";
+        console.log(btoa(demo));
+        console.log(atob(btoa(demo)));
 
         this.storageService.set('demon', { name: 'anthony', edad: 25 });
         console.log(this.storageService.get('demon'));
