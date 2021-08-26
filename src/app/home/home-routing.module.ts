@@ -25,7 +25,12 @@ const routes: Routes = [
             {
                 path: 'formulario',
                 loadChildren: () => import('./form/form.module').then(m => m.FormModule)
-            }
+            },
+            {
+                path: 'clientes',
+                loadChildren: () =>
+                  import('./jruiz/customers.module').then((m) => m.CustomersModule),
+              },
         ],
     },
 ];

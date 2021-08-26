@@ -1,0 +1,150 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalCustomer"
+  tabindex="-1"
+  aria-labelledby="modalCustomer"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" [formGroup]="form">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalCustomer">
+          {{ customer?.id ? "Actualizar" : "Registrar" }} cliente
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div
+            class="col-md-6 mb-3"
+            [ngClass]="{
+              'error-valid':
+                form.controls.nombres.invalid && form.controls.nombres.touched
+            }"
+          >
+            <label for="name" class="form-label">Nombres</label><br />
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              [ngModel]="customer?.nombres"
+              formControlName="nombres"
+            />
+            <small
+              class="text-error"
+              *ngIf="
+                form.controls.nombres.invalid && form.controls.nombres.touched
+              "
+            >
+              Campo requerido
+            </small>
+          </div>
+          <div
+            class="col-md-6 mb-3"
+            [ngClass]="{
+              'error-valid':
+                form.controls.apellidos.invalid &&
+                form.controls.apellidos.touched
+            }"
+          >
+            <label for="mimetype" class="form-label">Apellidos</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mimetype"
+              [ngModel]="customer?.apellidos"
+              formControlName="apellidos"
+            />
+            <small
+              class="text-error"
+              *ngIf="
+                form.controls.apellidos.invalid &&
+                form.controls.apellidos.touched
+              "
+            >
+              Campo requerido
+            </small>
+          </div>
+          <div
+            class="col-md-3 mb-3"
+            [ngClass]="{
+              'error-valid':
+                form.controls.edad.invalid && form.controls.edad.touched
+            }"
+          >
+            <label for="path" class="form-label">Edad</label>
+            <input
+              type="text"
+              class="form-control"
+              id="path"
+              [ngModel]="customer?.edad"
+              formControlName="edad"
+            />
+            <small
+              class="text-error"
+              *ngIf="form.controls.edad.invalid && form.controls.edad.touched"
+            >
+              Campo requerido
+            </small>
+          </div>
+          <div
+            class="col-md-9 mb-3"
+            [ngClass]="{
+              'error-valid':
+                form.controls.correo.invalid && form.controls.correo.touched
+            }"
+          >
+            <label for="size" class="form-label">Correo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="size"
+              [ngModel]="customer?.correo"
+              formControlName="correo"
+            />
+            <small
+              class="text-error"
+              *ngIf="
+                form.controls.correo.invalid && form.controls.correo.touched
+              "
+            >
+              Campo requerido
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          #closebutton
+        >
+          Cerrar
+        </button>
+        <button
+          *ngIf="customer?.id"
+          type="button"
+          class="btn btn-primary"
+          (click)="onClickUpdate(customer?.id)"
+        >
+          Actualizar Cliente
+        </button>
+        <button
+          *ngIf="!customer?.id"
+          type="button"
+          class="btn btn-primary"
+          (click)="onClickSave()"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
