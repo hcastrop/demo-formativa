@@ -13,6 +13,7 @@ export class StorageService {
 
     set(name: string, value: any) {
       this.storage.setItem(name, JSON.stringify(value));
+      return value;
     }
 
     delete(name: string) {

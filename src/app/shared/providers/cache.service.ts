@@ -85,7 +85,7 @@ export class CacheService {
             })
         ).pipe(
             map((item: any) => {
-                return item.value;
+                return item?.value;
             })
         );
     }
