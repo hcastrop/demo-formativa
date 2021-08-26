@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "start:dev": "ng server",
     "build": "ng build",
     "build-base-href": "ng build --base-href=/demo-formativa/",
     "watch": "ng build --watch --configuration development",
