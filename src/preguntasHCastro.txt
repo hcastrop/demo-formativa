@@ -1,0 +1,23 @@
+Evaluación Angular
+
+En la siguiente enunciado aplicaremos todos los conceptos y ejemplos explicados anteriormente en clases.
+
+1.	¿Qué comando de Angular CLI debo utilizar para crear un componente llamado mi-componente?
+
+a.	ng generate component mi-componente
+
+2.	¿Para qué sirve un decorador?
+a.	Para extender una función mediante otra función, pero sin tocar la original, que se está extendiendo.
+
+
+3.	3. ¿Esto es correcto? «Para definir propiedades de tipo “input” o entrada se utilizan paréntesis rectos «[]». Mientras que para las de tipo “output” o salida se utilizan los paréntesis curvos «()».»
+a.	No
+
+
+4.	Se podría decir que un componente es…
+a.	una directiva con un template.
+
+
+5.	¿Cómo sirvo/ejecuto una aplicación en Angular 2, gracias a su servidor web integrado?
+
+a.	ng serve

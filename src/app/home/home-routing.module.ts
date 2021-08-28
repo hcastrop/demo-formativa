@@ -17,10 +17,16 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./users/users.module').then((m) => m.UsersModule),
             },
+          
             {
                 path: 'banners',
                 loadChildren: () =>
                     import('./banners/banners.module').then((m) => m.BannersModule),
+            },
+            {
+                path: 'hcastro',
+                loadChildren: () =>
+                    import('./hcastro/hcastro.module').then((m) => m.HcastroModule),
             },
             {
                 path: 'formulario',
